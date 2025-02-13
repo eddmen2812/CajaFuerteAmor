@@ -1,5 +1,5 @@
 // Contraseña predefinida
-const CONTRASENA = "2812";
+const CONTRASENA = "1106";
 
 // Variable para almacenar la contraseña ingresada
 let contrasenaIngresada = "";
