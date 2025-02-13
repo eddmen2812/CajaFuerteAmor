@@ -106,3 +106,4 @@ function actualizarContador() {
 
 // Actualizar el contador cada segundo
 setInterval(actualizarContador, 1000);
+
