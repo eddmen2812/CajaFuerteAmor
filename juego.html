@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FELIZ SAN VALENTIN</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <audio id="musica" src="sound/Kurt-La_Mujer_Perfecta.mp3" autoplay></audio>
+    <div class="container">
+        <h1>¡Captura los corazones! ❤️</h1>
+        <p>Debes capturar 10 corazones para el siguiente nivel.</p>
+        
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+
+        <p class="counter">Corazones capturados: <span id="score">0</span>/10</p>
+        
+        <div id="game-area"></div>
+    </div>
+
+    <canvas id="particles"></canvas>
+
+    <script src="script2.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const musica = document.getElementById("musica");
+            
+            // Intenta reproducir cuando el usuario interactúa con la página
+            document.addEventListener("click", function() {
+                musica.play().catch(function(error) {
+                    console.log("Error al reproducir audio:", error);
+                });
+            }, { once: true }); // El evento solo se dispara una vez
+            
+            // Intenta reproducción automática
+            musica.play().catch(function(error) {
+                console.log("Reproducción automática bloqueada:", error);
+                // La reproducción automática fue bloqueada, esperará la interacción del usuario
+            });
+        });
+        </script>
+</body>
+</html>
