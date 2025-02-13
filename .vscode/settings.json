@@ -1,3 +1,4 @@
 {
-    "livePreview.defaultPreviewPath": "/index.html"
+    "livePreview.defaultPreviewPath": "/index.html",
+    "CodeGPT.apiKey": "Ollama"
 }
