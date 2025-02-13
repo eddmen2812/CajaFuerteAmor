@@ -10,6 +10,7 @@
 
 <body>
     <!-- Contenedor de la caja fuerte -->
+    <audio id="musica" src="sound/Kurt-La_Mujer_Perfecta.mp3" autoplay></audio>
 <div>
     <div class="container">
         <div class="caja-fuerte">
@@ -192,6 +193,24 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const musica = document.getElementById("musica");
+            
+            // Intenta reproducir cuando el usuario interactúa con la página
+            document.addEventListener("click", function() {
+                musica.play().catch(function(error) {
+                    console.log("Error al reproducir audio:", error);
+                });
+            }, { once: true }); // El evento solo se dispara una vez
+            
+            // Intenta reproducción automática
+            musica.play().catch(function(error) {
+                console.log("Reproducción automática bloqueada:", error);
+                // La reproducción automática fue bloqueada, esperará la interacción del usuario
+            });
+        });
+        </script>
 </body>
 
 </html>
