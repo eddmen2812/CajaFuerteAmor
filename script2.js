@@ -97,3 +97,46 @@ function drawParticles() {
 }
 
 drawParticles();
+
+
+//////////
+// Agregar este código en script2.js (página del juego)
+function initializeAudio() {
+    const musica = document.getElementById("musica");
+    
+    // Recuperar el tiempo de reproducción guardado
+    const savedTime = localStorage.getItem('audioTime');
+    if (savedTime) {
+        musica.currentTime = parseFloat(savedTime);
+    }
+    
+    // Guardar el tiempo de reproducción periódicamente
+    setInterval(() => {
+        localStorage.setItem('audioTime', musica.currentTime);
+    }, 1000);
+    
+    // Manejar el final de la canción
+    musica.addEventListener('ended', function() {
+        musica.currentTime = 0;
+        musica.play();
+    });
+    
+    // Intentar reproducir
+    document.addEventListener("click", function() {
+        musica.play().catch(function(error) {
+            console.log("Error al reproducir audio:", error);
+        });
+    }, { once: true });
+    
+    musica.play().catch(function(error) {
+        console.log("Reproducción automática bloqueada:", error);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", initializeAudio);
+
+// Antes de que la página se cierre o el usuario navegue
+window.addEventListener('beforeunload', function() {
+    const musica = document.getElementById("musica");
+    localStorage.setItem('audioTime', musica.currentTime);
+});
