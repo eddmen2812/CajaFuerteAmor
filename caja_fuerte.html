@@ -108,22 +108,28 @@
         </button>
     </div>
 
-    <!-- Sección de la galería de fotos (oculta inicialmente) -->
-    <div id="seccion-galeria" class="seccion-galeria">
-        <!-- Título de la galería -->
-        <div class="titulo-galeria">
-            <h1>Nuestros Recuerdos  </h1>
-        </div>
+ <!-- Reemplaza tu sección de galería actual con este código -->
+<div id="seccion-galeria" class="seccion-galeria">
+    <!-- Título de la galería -->
+    <div class="titulo-galeria">
+        <h1>Nuestros Recuerdos</h1>
+    </div>
 
-        <!-- Contenedor de las fotos -->
-        <div class="fotos">
-            <img src="./img/img1.jpg" alt="Foto 1">
-            <img src="./img/img2.jpg" alt="Foto 2">
-            <img src="./img/img3.jpg" alt="Foto 3">
-            <img src="./img/img4.jpg" alt="Foto 4">
-            <img src="./img/img5.jpg" alt="Foto 5">
-            <img src="./img/tuyo.jpg" alt="Foto 6">
-        </div>
+    <!-- Contenedor de las fotos -->
+    <div class="fotos">
+        <img src="./img/img1.jpg" alt="Foto 1" onclick="openModal(this)">
+        <img src="./img/img2.jpg" alt="Foto 2" onclick="openModal(this)">
+        <img src="./img/img3.jpg" alt="Foto 3" onclick="openModal(this)">
+        <img src="./img/img4.jpg" alt="Foto 4" onclick="openModal(this)">
+        <img src="./img/img5.jpg" alt="Foto 5" onclick="openModal(this)">
+        <img src="./img/tuyo.jpg" alt="Foto 6" onclick="openModal(this)">
+    </div>
+
+    <!-- Modal para la imagen ampliada -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" class="modal-content">
+    </div>
 
         <!-- Botón para ir a la carta -->
         <button class="boton-transparente boton-contador" onclick="mostrarCarta()">
@@ -192,6 +198,84 @@
         </button>
     </div>
 
+<style>
+/* Estilos para la galería y modal */
+.fotos img {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    max-width: 300px;
+    margin: 10px;
+}
+
+.fotos img:hover {
+    transform: scale(1.05);
+}
+
+/* Estilos del modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90vh;
+}
+
+.close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #d1548f;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>
+
+<script>
+// Funciones para el modal
+function openModal(img) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    modal.style.display = "block";
+    modalImg.src = img.src;
+}
+
+function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+}
+
+// Cerrar modal al hacer clic fuera de la imagen
+window.onclick = function(event) {
+    const modal = document.getElementById("imageModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Cerrar modal con la tecla ESC
+document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+        document.getElementById("imageModal").style.display = "none";
+    }
+});
+</script>
     <script src="script.js"></script>
     <script>
      // Agregar este código en el script de cajafuerte.html
